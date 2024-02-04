@@ -1,6 +1,8 @@
 // Reverse an Array:
 // Given an array, reverse the order of its elements. For example, [1, 2, 3] should become [3, 2, 1].
 
+// My solution
+
 function reverseArray (arr) {
     const reversed = [];
     for (let i = arr.length - 1; i >= 0; i--) {
@@ -8,6 +10,8 @@ function reverseArray (arr) {
     }
     return reversed;
 }
+
+// Alternative solution
 
 function reverseArrayInPlace(arr) {
     let start = 0;
@@ -28,6 +32,8 @@ function reverseArrayInPlace(arr) {
 // Find the Maximum and Minimum Elements:
 // Write a function to find the maximum and minimum elements in an array.
 
+// My solution
+
 function minMax (arr) {
     let min = arr[0];
     let max = arr[0];
@@ -43,6 +49,8 @@ function minMax (arr) {
     return [min, max];
 }
 
+// Alternative solution
+
 function minMax(arr) {
     const min = Math.min(...arr);
     const max = Math.max(...arr);
@@ -53,11 +61,52 @@ function minMax(arr) {
 // Calculate the Sum of Elements:
 // Sum all the elements in an array and return the result.
 
+function sumArr (arr) {
+    let sum = 0;
+    for (let num of arr) {
+        sum += num;
+    }
+    return sum;
+}
+
+// Using the reduce method is also a good solution, but the constraint here
+// Is to not use built-in array methods
+
 // Find the Average of Elements:
 // Calculate the average of all elements in an array.
 
+function avg (arr) {
+    let sum = 0;
+    for (let num of arr) {
+        sum += num;
+    }
+    return sum / arr.length;
+}
+
 // Rotate an Array to the Left:
 // Given an array and a number 'n', rotate the array to the left by 'n' positions.
+
+// My solution
+
+function rotateLeft (arr, n) {
+    let firstNums = arr.slice(0, n);
+    let rotated = arr.slice(n, arr.length);
+    return [...rotated, ...firstNums];
+}
+
+// Alternative solution
+
+// Remove the first element from the array and add it to the end of the array. This creates a left shift.
+// Repeat n times.
+
+function rotateLeft(arr, n) {
+    for (let i = 1; i <= n; i++) {
+      const firstNum = arr.shift();
+      arr.push(firstNum);
+    }
+    return arr;
+  }
+  
 
 // Check if an Array is Sorted:
 // Write a function to check if the elements of an array are in ascending or descending order.
