@@ -137,8 +137,81 @@ function isSorted (arr) {
 // Remove Duplicates from an Unsorted Array:
 // Remove duplicate elements from an unsorted array without using built-in methods.
 
+// My solution
+
+function removeDuplicates(arr) {
+    const keyCount = {};
+    const uniqueArr = [];
+  
+    for (let i = 0; i < arr.length; i++) {
+      keyCount.hasOwnProperty(arr[i]) ? keyCount[arr[i]]++ : (keyCount[arr[i]] = 1);
+  
+      if (keyCount[arr[i]] === 1) {
+        uniqueArr.push(arr[i]);
+      }
+    }
+  
+    return uniqueArr;
+  }
+
+  // Solution using sets
+
+  function removeDuplicates(arr) {
+    const uniqueSet = new Set(arr);
+    const uniqueArr = [...uniqueSet];
+  
+    return uniqueArr;
+  }
+  
+  
+
 // Find the Second Largest Element:
 // Write a function to find the second largest element in an array.
+
+// My solution
+
+function secondLargest (arr) {
+    if (arr.length < 2) {
+        return "inavlid array";
+      }
+
+    let largestIdx = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[largestIdx] < arr[i]) {
+            largestIdx = i;
+        }
+    }
+    arr.splice(largestIdx, 1);
+    return Math.max(...arr);
+}
+
+// Alternative solution
+
+function secondLargest(arr) {
+    if (arr.length < 2) {
+      return "Invalid array. Not enough elements to find the second largest.";
+    }
+  
+    let largest = arr[0];
+    let secondLargest = arr[1];
+  
+    // Ensure largest and secondLargest are correctly initialized
+    if (secondLargest > largest) {
+      [largest, secondLargest] = [secondLargest, largest];
+    }
+  
+    // Iterate through the array to find the largest and second-largest
+    for (let i = 2; i < arr.length; i++) {
+      if (arr[i] > largest) {
+        secondLargest = largest;
+        largest = arr[i];
+      } else if (arr[i] > secondLargest && arr[i] !== largest) {
+        secondLargest = arr[i];
+      }
+    }
+    return secondLargest;
+  }
+  
 
 // Union of Two Arrays:
 // Given two arrays, find their union (unique elements from both arrays).
