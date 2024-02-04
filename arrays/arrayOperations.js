@@ -111,6 +111,29 @@ function rotateLeft(arr, n) {
 // Check if an Array is Sorted:
 // Write a function to check if the elements of an array are in ascending or descending order.
 
+// My solution
+
+function isSorted (arr) {
+    let sortedAsc = true;
+    let sortedDesc = true;
+
+    let leftIdx = 0;
+    let rightIdx = arr.length - 1;
+
+    if (arr.length <= 1) {
+        return "invalid array";
+    }
+
+    while (rightIdx > 0 && leftIdx < arr.length - 1) {
+        (arr[leftIdx] <= arr[leftIdx + 1]) ? leftIdx ++ : sortedAsc = false;
+        (arr[rightIdx] <= arr[rightIdx - 1]) ? rightIdx -- : sortedDesc = false;
+        if (!sortedAsc && !sortedDesc) {
+            return "not sorted";
+        }
+    }
+    return sortedAsc ? "sorted in ascending order" : "sorted in descending order";
+}
+
 // Remove Duplicates from an Unsorted Array:
 // Remove duplicate elements from an unsorted array without using built-in methods.
 
