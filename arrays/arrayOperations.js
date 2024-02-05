@@ -216,11 +216,121 @@ function secondLargest(arr) {
 // Union of Two Arrays:
 // Given two arrays, find their union (unique elements from both arrays).
 
+// My solutions
+
+function union (arr1, arr2) {
+    let combined = [...arr1, ...arr2];
+    // then repeat steps above for removeDuplicates function
+}
+
+function union (arr1, arr2) {
+    return Array.from(new Set([...arr1, ...arr2]));
+}
+
+// Alternate solution
+
+function union(arr1, arr2) {
+    const unionSet = new Set(arr1);
+  
+    for (let element of arr2) {
+      unionSet.add(element);
+    }
+  
+    return Array.from(unionSet);
+  }
+  
+
 // Intersection of Two Arrays:
 // Given two arrays, find their intersection (common elements in both arrays).
 
+// My solution
+
+function intersection(arr1, arr2) {
+    const keyCount = {};
+    const intersectionArr = [];
+
+    for (let element of arr1) {
+      keyCount[element] = (keyCount[element] || 0) + 1;
+    }
+
+    for (const element of arr2) {
+      if (keyCount[element]) {
+        intersectionArr.push(element);
+        // Some solutions included this line, not sure why
+        keyCount[element]--;
+      }
+    }
+    return Array.from(new Set(intersectionArr));
+  }
+    
+  // Alternate solution
+
+  function intersection(arr1, arr2) {
+    const set1 = new Set(arr1);
+    const intersectionSet = new Set();
+  
+    for (let element of arr2) {
+      if (set1.has(element)) {
+        intersectionSet.add(element);
+      }
+    }
+  
+    return Array.from(intersectionSet);
+  }
+  
 // Find the Missing Number:
 // Given an array containing 'n' distinct numbers taken from the range 0 to 'n', find the missing number.
 
+// n is the length of the given array and last number of the expected array
+
+function missingNum (arr) {
+    // calculate actual sum
+    // const actualSum = arr.reduce((acc, curr) => acc + curr, 0);
+    // But since our constraint is to not use built-in array methods...
+    let actualSum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        actualSum += arr[i];
+    }
+    const n = arr.length;
+    // calculate expected sum
+    let expectedSum = 0;
+    for (let i = 0; i <= n; i++) {
+        expectedSum += i;
+    }
+    let missingNum = expectedSum - actualSum;
+    return missingNum;
+}
+
+// Alternate solution
+
+function missingNum(arr) {
+    let actualSum = 0;
+    for (let i = 0; i < arr.length; i++) {
+      actualSum += arr[i];
+    }
+  
+    const n = arr.length;
+    const expectedSum = (n * (n + 1)) / 2;
+  
+    let missingNum = expectedSum - actualSum;
+    return missingNum;
+  }
+
+  // Iterative solution
+
+  function missingNum(arr) {
+    const n = arr.length;
+  
+    for (let i = 0; i < n - 1; i++) {
+      if (arr[i + 1] - arr[i] !== 1) {
+        return arr[i] + 1;
+      }
+    }
+  
+    return arr[n - 1] === n ? 0 : n;
+  }
+  
+
 // Move Zeros to the End:
 // Given an array, move all zeros to the end without changing the order of non-zero elements.
+
