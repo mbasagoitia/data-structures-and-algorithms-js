@@ -334,3 +334,43 @@ function missingNum(arr) {
 // Move Zeros to the End:
 // Given an array, move all zeros to the end without changing the order of non-zero elements.
 
+// My solutions
+
+function moveZeros (arr) {
+    let zeroCount = 0;
+    const newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] === 0 ? zeroCount++ : newArr.push(arr[i]);
+    }
+    for (let i = 1; i <= zeroCount; i++) {
+        newArr.push(0);
+    }
+    return newArr;
+}
+
+function moveZeros (arr) {
+    const zeroArr = [];
+    const newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] === 0 ? zeroArr.push(arr[i]) : newArr.push(arr[i]);
+    }
+    return [...newArr, ...zeroArr];
+}
+
+// Alternate solution
+
+function moveZeros(arr) {
+    let nonZeroCount = 0;
+  
+    // Move non-zero elements to the front
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] !== 0) {
+        [arr[nonZeroCount], arr[i]] = [arr[i], arr[nonZeroCount]];
+        nonZeroCount++;
+      }
+    }
+  
+    return arr;
+  }
+  
+
