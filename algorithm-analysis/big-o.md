@@ -31,3 +31,24 @@ O(logn): Logarithmic space complexity: Extra space needed grows, but not at the 
 Try to avoid quadratic space complexity.
 
 ## Big-O with Objects
+
+Actions and their Big-O time-complexity:
+
+Insert, Remove, Access: 0(1)
+Search, Object.keys(), Object.values(), Object.entries(): O(n)
+
+## Big-O with Arrays
+
+Actions and their Big-O time-complexity:
+
+Insert/remove at end (push(), pop()): O(1)
+Insert/remove at beginning(shift(), unshift()): O(n) (because index has to be updated for every remaining element)
+
+Access: O(1)
+Search: O(n)
+
+concat(), slice(), splice(): O(n)
+
+forEach(), map(), filter(), reduce(): O(n)
+
+Note that if your solution using a method like forEach or map uses a for loop inside of it, the time complexity will become quadratic.
