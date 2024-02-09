@@ -40,3 +40,80 @@ function fibonacci(n) {
 }
 
 // Big-O: O(n) (linear)
+
+// Recursive solution
+
+function fibonacciRecursive(n) {
+    if (n <= 0) {
+        return [];
+    } else if (n === 1) {
+        return [0];
+    } else if (n === 2) {
+        return [0, 1];
+    } else {
+        const sequence = fibonacciRecursive(n - 1);
+        sequence.push(sequence[sequence.length - 1] + sequence[sequence.length - 2]);
+        return sequence;
+    }
+}
+
+// Slightly different version
+// Given a number n, find the nth element of the fibonacci sequence
+
+// Iterative solution
+
+function fibonacciIterative(n) {
+    if (n <= 0) {
+        return null;
+    }
+    if (n === 1) {
+        return 0;
+    }
+    if (n === 2) {
+        return 1;
+    }
+
+    let prev = 0;
+    let current = 1;
+
+    for (let i = 3; i <= n; i++) {
+        const next = prev + current;
+        prev = current;
+        current = next;
+    }
+    return current;
+}
+
+// Big-O: O(n) (linear)
+
+// Recursive solution
+
+function fibonacciRecursive(n) {
+    // Base cases
+    if (n <= 1) {
+        return 0;
+    }
+    if (n === 2) {
+        return 1;
+    }
+    // Recursive case
+    return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
+}
+
+function fibonacciRecursive(n) {
+    // Base case
+    if (n < 2) {
+        return n;
+    }
+    // Recursive case
+    return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
+}
+
+// It's necessary to remember the return value of each function call, because
+// that is what will be used for the calculation in the next call
+
+// fibonacciRecursive(3) returns 1 (1 + 0)
+// fibonacciRecursive(4) returns 2 (return value from fibonacciRecursive(3) + 1)
+// fibonacciRecursive(5) returns 3 (return value from fibonacciRecursive(4) + return value from fibonacciRecursive(3))
+
+// Big-O: (2^n) (not optimal)

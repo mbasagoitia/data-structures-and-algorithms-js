@@ -2,7 +2,7 @@
 // The factorial is the product of all positive integers less than or equal to n
 // Factorial of 0 = 1
 
-// My solution (no recursion)
+// My solution (iterative)
 
 function factorial(n) {
     let product = 1;
@@ -15,7 +15,7 @@ function factorial(n) {
 
 // Big-O: O(n) (linear)
 
-// My solution (using recursion)
+// My solution (recursive)
 
 function factorial(n) {
     if (n === 0 || n === 1) {
