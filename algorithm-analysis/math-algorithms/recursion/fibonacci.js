@@ -100,6 +100,18 @@ function fibonacciRecursive(n) {
     return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
 }
 
+
+// It's necessary to remember the return value of each function call, because
+// that is what will be used for the calculation in the next call
+
+// fibonacciRecursive(1) returns 0 according to the first base case
+// fibonacciRecursive(2) returns 1 according to the second base case
+// fibonacciRecursive(3) returns 1 (1 + 0) (from previous two calls)
+// fibonacciRecursive(4) returns 2 (return value from fibonacciRecursive(3) + 1)
+// fibonacciRecursive(5) returns 3 (return value from fibonacciRecursive(4) + return value from fibonacciRecursive(3))
+
+// Note that the below solution counts numbers of the sequences as indices (starting at 0 instead of 1)
+
 function fibonacciRecursive(n) {
     // Base case
     if (n < 2) {
@@ -108,12 +120,5 @@ function fibonacciRecursive(n) {
     // Recursive case
     return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
 }
-
-// It's necessary to remember the return value of each function call, because
-// that is what will be used for the calculation in the next call
-
-// fibonacciRecursive(3) returns 1 (1 + 0)
-// fibonacciRecursive(4) returns 2 (return value from fibonacciRecursive(3) + 1)
-// fibonacciRecursive(5) returns 3 (return value from fibonacciRecursive(4) + return value from fibonacciRecursive(3))
 
 // Big-O: (2^n) (not optimal)

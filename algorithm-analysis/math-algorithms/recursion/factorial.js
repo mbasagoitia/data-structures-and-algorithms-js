@@ -24,5 +24,9 @@ function factorial(n) {
     return n * factorial(n - 1);
 }
 
+// factorial(1) returns 1 according to the base case
+// factorial(2) returns 2 (2 * return value from factorial(1) which is 1)
+// factorial(3) returns 6 (3 * return value from factorial(2) which is 2)
+
 //Big-O: O(n) (linear)
 
