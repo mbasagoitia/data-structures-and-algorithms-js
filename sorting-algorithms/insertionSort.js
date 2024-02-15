@@ -13,19 +13,20 @@
 // Repeat until all unsorted elements are in their correct places
 
 function insertionSort (arr) {
-    // We start at index 1 because the first element is assumed to be sorted
+    // We start at index 1 and traverse the unsorted part of the array because the first element
+    // is assumed to be sorted
     for (let i = 1; i < arr.length ; i++) {
         let numberToInsert = arr[i];
-        // j is the index of the sorted element
+        // j is the current index of the sorted half of the array
         let j = i - 1;
-        // Iterate back through the sorted part of the array until index 0
+        // Iterate back through the sorted part of the array until index 0 or you find where NTI belongs
         while (j >= 0 && arr[j] > numberToInsert) {
-            // All sorted elements greater than the NTI are shifted to the right by one index
+            // Each sorted element greater than the NTI is shifted to the right by one index
             arr[j + 1] = arr[j];
             j--;
         }
-        // arr[j] is where the insertion has to happen and where the while loop condition fails (arr[j] < NTI)
-        // So, we insert NTI to the right of that number arr[j] at the position arr[j + 1]
+        // The while loop condition fails where arr[j] < numberToInsert
+        // Now we insert NTI just to the right of arr[j]
         arr[j + 1] = numberToInsert;
     }
 }
