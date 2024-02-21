@@ -57,7 +57,6 @@ function fibonacciRecursive(n) {
     }
 }
 
-// Slightly different version
 // Given a number n, find the nth element of the fibonacci sequence
 
 // Iterative solution
