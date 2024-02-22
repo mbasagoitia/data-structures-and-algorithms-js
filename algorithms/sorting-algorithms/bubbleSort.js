@@ -30,4 +30,7 @@ function bubbleSort (arr) {
     } while (swapped);
 }
 
+// Instead of using the temporary variable to swap arr[i] and arr[i + 1],
+// you can use destructuring syntax: [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+
 // Big-O: O(n^2) (quadratic)
