@@ -14,7 +14,7 @@ Selecting the right data structure can save time and memory in your application.
 
 More familiar to web developers may be the document object model (DOM), which is a tree data structure.
 
-## JavaScript Built-In Data Structures
+## Built-In Data Structures in JavaScript
 
 - Arrays
 - Objects
