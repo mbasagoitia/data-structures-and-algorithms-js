@@ -18,3 +18,24 @@ Supports two main operations:
 - Call stack in JavaScript runtime
 
 See stack.js in this folder for a simple implementation of a stack.
+
+# Queues
+
+A queue is a sequential of elements that follows the first in, first out (FIFO) principle.
+
+The first element inserted is the first element to be removed.
+
+Similar to a stack, the queue is an abstract data type that is defined by its behavior.
+
+Supports two main operations:
+
+- Enqueue (adds an element to the tail of the collection)
+- Dequeue (removes an element from the head of the collection)
+
+## When a Queue is Used
+
+Queues are useful when you need to process data in a specific order
+
+- Printers printing multiple documents
+- CPU task scheduling
+- Callback queue in JavaScript runtime
