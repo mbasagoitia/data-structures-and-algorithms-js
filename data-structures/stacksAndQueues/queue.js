@@ -56,3 +56,37 @@ console.log("Peek:", queue.peek()); // Output: 2
 console.log("Is empty:", queue.isEmpty()); // Output: false
 
 console.log("Queue size:", queue.size()); // Output: 2
+
+// Optimized implementation of the queue data structure
+// Remember that the shift method has a linear time complexity. We will use an object instead of an array
+// to have a constant time complexity when dequeuing items.
+
+class Queue {
+    constructor() {
+        this.items = {};
+        this.rear = 0;
+        this.front = 0;
+    }
+    enqueue(element) {
+        this.items[this.rear] = element;
+        this.rear++;
+    }
+    dequeue() {
+        const item = this.items[this.front];
+        delete this.items[this.front];
+        this.front++;
+        return item;
+    }
+    isEmpty() {
+        return this.rear - this.front === 0;
+    }
+    peek() {
+        return this.items[this.front];
+    }
+    size() {
+        return this.rear - this.front;
+    }
+    print() {
+        console.log(this.items);
+    }
+}
