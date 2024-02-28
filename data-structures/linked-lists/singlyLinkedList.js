@@ -61,6 +61,28 @@ class LinkedList {
         }
         this.size++;
     }
+
+    insert(value, index) {
+        if (index < 0 || index > this.size) {
+            return;
+        }
+        if (index === 0) {
+            this.prepend(value);
+        } else {
+            const node = new Node(value);
+            let prev = this.head;
+            // Increment up to the node before where you want to insert the new node
+            for (let i = 0; i < index - 1; i++) {
+                // Traverse through the list starting from the head
+                prev = prev.next;
+            }
+            // Make the current node's pointer the previous node's pointer
+            node.next = prev.next;
+            // Make the previous node point to the current node
+            prev.next = node;
+            this.size++;
+        }
+    }
 }
 
 // Big-O time complexity:
