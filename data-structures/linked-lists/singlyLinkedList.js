@@ -1,20 +1,69 @@
-// Insert at the Beginning:
-// Write a function to insert a new node at the beginning of a singly linked list.
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
 
-// Insert at the End:
-// Write a function to insert a new node at the end of a singly linked list.
+class LinkedList {
+    constructor() {
+        this.head = null;
+        this.size = 0;
+    }
 
-// Delete a Node:
-// Write a function to delete a node with a given data value from a singly linked list.
+    isEmpty() {
+        return this.size === 0;
+    }
 
-// Reverse a Linked List:
-// Write a function to reverse a singly linked list.
+    getSize() {
+        return this.size;
+    }
+    // Add an element to the start of the list
+    prepend(value) {
+        const node = new Node(value);
+        if (!this.isEmpty()) {
+            // New node points to current head
+            node.next = this.head
+        }
+        // Current head is updated to the new node
+        this.head = node;
+        this.size++;
+    }
 
-// Detect a Cycle:
-// Write a function to detect if a singly linked list has a cycle.
+    print() {
+        if (this.isEmpty()) {
+            console.log("List is empty");
+        } else {
+            // Traverse the entire list starting from the head and print the value of each node
+            let current = this.head;
+            let listValues = "";
+            // We will update the current pointer to the current.next property
+            // While the next value is truthy (not pointing to null), we will add the value to listValues
+            while (current) {
+                listValues += `${current.value} `;
+                current = current.next;
+            }
+            console.log(listValues);
+        }
+    }
+    // Add an element to the end of the list
+    append(value) {
+        const node = new Node(value);
+        if (this.isEmpty()) {
+            this.head = node;
+        } else {
+            // Make the current last node point to the newly created node
+            let previous = this.head;
+            while (previous.next) {
+                previous = previous.next;
+            }
+            previous.next = node;
+        }
+        this.size++;
+    }
+}
 
-// Find the Middle Element:
-// Write a function to find the middle element of a singly linked list.
+// Big-O time complexity:
 
-// Merge Two Sorted Linked Lists:
-// Write a function to merge two sorted singly linked lists into a single sorted list.  
+// Prepend: O(1) (constant)
+// Append: O(n) (linear) requires you traverse the entire list to get to the last node
