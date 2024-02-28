@@ -1,4 +1,4 @@
-## Linked Lists
+# Linked Lists
 
 Linked lists are a linear data structure, but elements are not stored in a particular memory location. Each element is a separate object that contains a pointer or a link to the next object in the list. Each element (called a node) contains data and a link to the next node. Each list contains a head (reference to the first node) and tail (last node whose reference is null).
 

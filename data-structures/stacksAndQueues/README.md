@@ -39,3 +39,26 @@ Queues are useful when you need to process data in a specific order
 - Printers printing multiple documents
 - CPU task scheduling
 - Callback queue in JavaScript runtime
+
+## Circular Queues
+
+Extended version of a regular queue. 
+
+The size of the queue is fixed and a single block of memory is used as if the first element is connected to the last element.
+
+Also referred to as circular buffer or ring buffer and follows the FIFO principle.
+
+A circular queue will reuse the empty block created during the dequeue operation. 
+
+When working with queues of a fixed maximum size, a circular queue is a great choice.
+
+Supports two main operations: 
+
+- Enqueue
+- Dequeue
+
+Usage examples:
+
+- Clock
+- Streaming data
+- Traffic lights

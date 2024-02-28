@@ -19,7 +19,7 @@ class Queue {
     // Peek: Returns the element at the front of the queue without removing it
     peek() {
         if (this.isEmpty()) {
-            return "Stack is empty";
+            return "Queue is empty";
         }
         return this.items[0];
     }
