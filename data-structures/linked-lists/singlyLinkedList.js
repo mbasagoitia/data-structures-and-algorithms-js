@@ -145,6 +145,24 @@ class LinkedList {
         }
         return -1;
     }
+
+    reverse() {
+        // Four steps for each node:
+        // Create temporary variables previous and current
+        // Create a temporary variable next to hold the next value while updating current.next to previous
+        // Update previous to current to move to the next node
+        // Update current to next
+        // Finally, once the current value is null (the loop fails), set previous to the new head
+        let prev = null;
+        let curr = this.head;
+        while (curr) {
+            let next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        this.head = prev;
+    }
 }
 
 // Big-O time complexity:
