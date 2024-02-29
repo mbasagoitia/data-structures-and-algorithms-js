@@ -103,9 +103,53 @@ class LinkedList {
         this.size--;
         return removedNode.value;
     }
+
+    removeValue(value) {
+        if (this.isEmpty()) {
+            return null;
+        }
+        if (this.head.value === value) {
+            this.head = this.head.next;
+            this.size--;
+            return value;
+        } else {
+            let prev = this.head;
+            // While there are still nodes left in the list and the next node doesn't contain the passed in value
+            // (the loop condition will fail when it finds the passed in value)
+            while (prev.next && prev.next.value !== value) {
+                prev = prev.next;
+            }
+            if (prev.next) {
+                const removedNode = prev.next;
+                prev.next = removedNode.next;
+                this.size--;
+                return value;
+            }
+            // If the pointer reaches the end of the list without finding the passed in value
+            return null;
+        }        
+    }
+
+    search(value) {
+        if (this.isEmpty()) {
+            return -1;
+        }
+        let i = 0;
+        let current = this.head;
+        while (current) {
+            if (current.value === value) {
+                return i;
+            }
+            current = current.next;
+            i++;
+        }
+        return -1;
+    }
 }
 
 // Big-O time complexity:
 
 // Prepend: O(1) (constant)
 // Append: O(n) (linear) requires you traverse the entire list to get to the last node
+// Remove head: constant
+// Remove node that is not head: linear
