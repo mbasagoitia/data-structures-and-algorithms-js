@@ -23,7 +23,7 @@ class LinkedList {
         const node = new Node(value);
         if (!this.isEmpty()) {
             // New node points to current head
-            node.next = this.head
+            node.next = this.head;
         }
         // Current head is updated to the new node
         this.head = node;
@@ -82,6 +82,26 @@ class LinkedList {
             prev.next = node;
             this.size++;
         }
+    }
+
+    removeFrom(index) {
+        if (index < 0 || index >= this.size) {
+            return null;
+        }
+        let removedNode;
+        if (index === 0) {
+            removedNode = this.head;
+            this.head = this.head.next;
+        } else {
+            let prev = this.head;
+            for (let i = 0; i < index - 1; i++) {
+                prev = prev.next;
+            }
+            removedNode = prev.next;
+            prev.next = removedNode.next;
+        }
+        this.size--;
+        return removedNode.value;
     }
 }
 
