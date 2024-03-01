@@ -4,6 +4,8 @@ class LinkedList {
     constructor () {
         this.head = null;
         this.size = 0;
+        // Optional: linked list with tail
+        this.tail = null;
     }
 
     isEmpty() {
@@ -20,6 +22,8 @@ class LinkedList {
         // 1. Create temporary variables previous and current and assign them to the start of the list
         let previous = null;
         let current = this.head;
+        // Optional: Update the new tail to current (head) before traversing the list
+        this.tail = current;
         // 2. Traverse the list while current is not null
         while (current) {
             // 3. Hold the next value temporarily so we can keep traversing the list later
