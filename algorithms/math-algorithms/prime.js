@@ -35,4 +35,3 @@ function isPrime(n) {
 }
 
 // Big-O: O(sqrt(n))
-

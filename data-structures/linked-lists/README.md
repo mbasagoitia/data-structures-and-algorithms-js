@@ -39,8 +39,8 @@ The methods we implemented on a linked list in this exercise include the followi
 - prepend
 - append
 - insert
-- search
 - removeFrom
 - removeValue
+- search
 - print
 - reverse
