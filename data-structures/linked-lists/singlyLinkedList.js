@@ -156,11 +156,15 @@ class LinkedList {
         let prev = null;
         let curr = this.head;
         while (curr) {
+            // Stores the temporary variable so we can continue the loop
             let next = curr.next;
+            // The actual reversing process, changing the next value to the previous value
             curr.next = prev;
+            // Shifting the loop to the next set of nodes
             prev = curr;
             curr = next;
         }
+        // Redefining the head to the new first element, as current will be null
         this.head = prev;
     }
 }
@@ -171,3 +175,95 @@ class LinkedList {
 // Append: O(n) (linear) requires you traverse the entire list to get to the last node
 // Remove head: constant
 // Remove node that is not head: linear
+
+// Linked list with tail
+
+// Insertion at front and end and removal from end have constant time complexity in this scenario
+// Whereas removal from end still has linear time complexity
+
+class LinkedList {
+    constructor () {
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
+    }
+
+    isEmpty() {
+        return this.size === 0;
+    }
+
+    getSize() {
+        return this.size;
+    }
+
+    print() {
+        if (this.isEmpty()) {
+            console.log("List is empty");
+        } else {
+            let current = this.head;
+            let listValues = "";
+            while (current) {
+                listValues += `${current.value} `;
+                current = current.next;
+            }
+            console.log(listValues);
+        }
+    }
+
+    prepend(value) {
+        const node = new Node(value);
+        if (this.isEmpty()) {
+            this.head = node;
+            this.tail = node;
+        } else {
+            node.next = this.head;
+            this.head = node;
+        }
+        this.size++;
+    }
+
+    // This is different and easier when we also have a tail pointer!
+    append(value) {
+        const node = new Node(value);
+        if (this.isEmpty()) {
+            this.head = node;
+            this.tail = node;
+        } else {
+            this.tail.next = node;
+            this.tail = node;
+        }
+        this.size++;
+    }
+
+    removeFromFront() {
+        if (this.isEmpty()) {
+            return null;
+        }
+        const value = this.head.value;
+        this.head = this.head.next;
+        this.size--;
+        return value;
+    }
+
+    // This still requires traversing the array to get a reference to the current tail's previous node and updating the tail
+    removeFromEnd() {
+        if (this.isEmpty()) {
+            return null;
+        }
+        const value = this.tail.value;
+        if (this.size === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            let prev = this.head;
+            while (prev.next !== this.tail) {
+                prev = prev.next;
+            }
+            prev.next = null;
+            this.tail = prev;
+        }
+        this.size--;
+        return value;
+    }
+
+}
