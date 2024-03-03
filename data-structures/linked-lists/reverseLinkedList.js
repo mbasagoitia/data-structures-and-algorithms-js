@@ -35,7 +35,7 @@ class LinkedList {
             current = next;
         }
         // 6. Once the loop fails, current is null and the previous value points to the last node
-        // So, update the new head to the old last node.
+        // Update the new head to the old last node.
         this.head = previous;
     }
 }
