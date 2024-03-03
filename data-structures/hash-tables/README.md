@@ -29,3 +29,14 @@ Implemented when constant time lookup and insertion are required
 
 - Database indexing
 - Caches
+
+## Collision Handling
+
+A collision occurs when the hashing function assigns the same index in the hash table to different keys, which can result in the overwriting of data.
+
+In the implementation of the hashing function in this example, this could occur with keys that have the same letters in a different order (mane and name). The hashing function will generate the same index.
+
+One method to handle this is to, instead of storing the value at the given index, store arrays of key value pairs at that index.
+
+## Hashing Functions
+
