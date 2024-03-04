@@ -21,12 +21,15 @@ class HashTable {
         // Store a reference to this index, which holds an array, which we will call bucket
         const bucket = this.table[index];
         if (!bucket) {
+            // Creates a bucket and sets its first key-value pair
             this.table[index] = [[key, value]];
         } else {
+            // This scenario essentially overwrites any value that was already set for this key previously.
             const sameKeyItem = bucket.find(item => item[0] === key);
             if (sameKeyItem) {
                 sameKeyItem[1] = value;
             } else {
+                // This sets a new key-value pair where a bucket already exists
                 bucket.push([key, value]);
             }
         }
@@ -70,3 +73,153 @@ const table = new HashTable(50);
 // Average-case: constant
 
 // Time complexity can be improved with better hashing functions
+
+// Check this practice implementation
+
+class Node {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    constructor() {
+        this.size = 0;
+        this.head = null;
+    }
+
+    isEmpty() {
+        return this.size === 0;
+    }
+
+    getSize() {
+        return this.size;
+    }
+
+    prepend(value) {
+        const node = new Node(value);
+        if (!this.isEmpty()) {
+            node.next = this.head;
+        }
+        this.head = node;
+        this.size++;
+    }
+
+    append(value) {
+        const node = new Node(value);
+        if (this.isEmpty()) {
+            this.head = node;
+        } else {
+            let prev = this.head;
+            while (prev.next) {
+                prev = prev.next;
+            }
+            prev.next = node;
+        }
+        this.size++;
+    }
+
+    insert(value, index) {
+        if (index < 0 || index > this.size) {
+            return null;
+        }
+        if (index === 0) {
+            this.prepend(value);
+        } else {
+            const node = new Node(value);
+            let prev = this.head;
+            for (let i = 0; i < index - 1; i++) {
+                prev = prev.next;
+            }
+            node.next = prev.next;
+            prev.next = node;
+        }
+        this.size++;
+    }
+
+    removeFrom(index) {
+        if (index < 0 || index > this.size) {
+            return null;
+        } 
+        let removedNode;
+        if (index === 0) {
+            removedNode = this.head;
+            this.head = this.head.next;
+        } else {
+            let prev = this.head;
+            for (let i = 0; i < index - 1; i++) {
+                prev = prev.next;
+            }
+            removedNode = prev.next;
+            prev.next = removedNode.next;
+        }
+        this.size--;
+        return removedNode.value;
+    }
+    
+    removeValue(value) {
+        if (this.isEmpty()) {
+            return null;
+        }
+        if (this.head.value === value) {
+            this.head = this.head.next;
+            this.size--;
+            return value;
+        } else {
+            let prev = this.head;
+            while (prev.next && prev.next.value !== value) {
+                prev = prev.next;
+            }
+            if (prev.next) {
+                let removedNode = prev.next;
+                prev.next = removedNode.next;
+                this.size--;
+                return removedNode.value;
+            }
+            return null;
+        }
+    }
+
+    search(value) {
+        if (this.isEmpty()) {
+            return -1;
+        }
+        let current = this.head;
+        let i = 0;
+        while (current) {
+            if (current.value === value) {
+                return i;
+            }
+            current = current.next;
+            i++;
+        }
+        return -1;
+    }
+
+    print() {
+        if (this.isEmpty()) {
+            console.log("List is empty");
+        } else {
+            let current = this.head;
+            let listValues = "";
+            while (current) {
+                listValues += `${current.value} `;
+                current = current.next;
+            }
+            console.log(listValues);
+        }
+    }
+
+    reverse() {
+        let prev = null;
+        let current = this.head;
+        while (current) {
+            let next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        this.head = prev;
+    }
+}
