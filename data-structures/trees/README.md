@@ -56,3 +56,38 @@ Binary search trees support the following operations:
 - Searching
 - Sorting
 - Implementing abstract data types such as lookup tables and priority queues
+
+## Methods
+
+Below is a list of the methods we will be implementing on the binary search tree in this exercise.
+
+- isEmpty: checks if the tree is empty (root points to null)
+- insert/insertNode: inserts a node at the correct place in the tree following the principles of the BST. Uses recursion to search the left or right side of the tree, updating the root node as you move along.
+- search: returns true/false depending upon if a value exists in the tree. Also uses recursion, updating the root to the left or right node as needed.
+
+Tree traversal
+
+Depth-first search: starts at the root node and explores as far as possible along each branch before backtracking.
+
+3 types: 
+
+- Preorder: 
+1) read the data of the node
+2) visit the left subtree
+3) visit the right subtree
+
+- Inorder:
+1) visit the left subtree
+2) read the data of the node
+3) visit the right subtree
+
+- Postorder
+1) visit the left subtree
+2) visit the right subtree
+3) read the data of the node
+
+Breadth-first search: explore all nodes at the present depth before moving on to nodes at the next depth level
+
+1) create a queue
+2) enqueue the root node
+3) as long as a node exists in the queue, dequeue the node, read the node's value, enqueue the node's left child (if it exists), enqueue the node's right child (if it exists)
