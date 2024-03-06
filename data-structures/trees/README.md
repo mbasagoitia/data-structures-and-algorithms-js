@@ -65,7 +65,7 @@ Below is a list of the methods we will be implementing on the binary search tree
 - insert/insertNode: inserts a node at the correct place in the tree following the principles of the BST. Uses recursion to search the left or right side of the tree, updating the root node as you move along.
 - search: returns true/false depending upon if a value exists in the tree. Also uses recursion, updating the root to the left or right node as needed.
 
-Tree traversal
+- Tree traversal
 
 Depth-first search: starts at the root node and explores as far as possible along each branch before backtracking.
 
@@ -91,3 +91,7 @@ Breadth-first search: explore all nodes at the present depth before moving on to
 1) create a queue
 2) enqueue the root node
 3) as long as a node exists in the queue, dequeue the node, read the node's value, enqueue the node's left child (if it exists), enqueue the node's right child (if it exists)
+
+-minMax: find the minimum and maximum values present in a BST (necessary for deleting a node based on implementation)
+-delete: delete a node from the tree given its value. There are 3 possible scenarios: the node has no children (remove the node from the tree); the node has one child (remove the node and replace it with its child); the node has two children (copy the value of the in order successor to the node and delete it, then replace the node to be deleted with the value you copied)
+

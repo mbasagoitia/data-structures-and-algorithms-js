@@ -91,4 +91,47 @@ class BinarySearchTree {
             }
         }
     }
+    min(root) {
+        if (!root.left) {
+            return root.value;
+        } else {
+            return this.min(root.left);
+        }
+    }
+    max(root) {
+        if (!root.right) {
+            return root.value;
+        } else {
+            return this.max(root.right);
+        }
+    }
+    delete(value) {
+        this.root = this.deleteNode(this.root, value);
+    }
+    deleteNode(root, value) {
+        // Do NOT call this.isEmpty() because you want to know if the current root (could be any node) is null, not just the main root of the tree
+        if (root === null) {
+            return root;
+        }
+        if (value < root.value) {
+            root.left = this.deleteNode(root.left, value);
+        } else if (value > root.value) {
+            root.right = this.deleteNode(root.right, value);
+        } else {
+            // We have found the value that is equal to the passed in value
+            if (!root.left && !root.right) {
+                return null;
+            }
+            if (!root.left) {
+                return root.right;
+            } else if (!root.right) {
+                return root.left;
+            }
+            // If both of these checks fail, the node has two child nodes
+            // The in order successor is the node in the right sub tree with the smallest value
+            root.value = this.min(root.right);
+            root.right = this.deleteNode(root.right, root.value);
+        }
+        return root;
+    }
 }
